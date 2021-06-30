@@ -3,9 +3,19 @@ import json
 
 def startpy():
 
+    data = {
+        "apple":"a day",
+        "doctor":"away",
+        "docker":"greata"
+    }
+
+    serialized_data = json.dumps(data)
+
     p = Producer({'bootstrap.servers': 'localhost:9091'})
 
-    p.produce('project-x', key='1', value=json.dumps({"Talha":'Altair'}))
+    p.produce('fruit-vendor', key='altair', value=serialized_data)
+
+    print("sent")
 
     p.flush(30)
 
